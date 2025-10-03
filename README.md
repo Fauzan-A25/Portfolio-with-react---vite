@@ -68,7 +68,7 @@ Ensure you have the following installed:
 1. **Clone the repository**
 ```
 
-git clone https://github.com/yourusername/portfolio-react.git
+git clone https://github.com/Fauzan-A25/Portfolio-with-react-and-vite.git
 cd portfolio-react
 
 ```
@@ -98,6 +98,7 @@ http://localhost:5173
 
 ```
 
+npm start        \# Start web
 npm run dev      \# Start development server
 npm run build    \# Build for production
 npm run preview  \# Preview production build
@@ -346,11 +347,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👤 Author
 
-**Your Name**
+**Fauzan Ahsanudin Alfikri**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [@yourusername](https://linkedin.com/in/yourusername)
-- Email: your@email.com
+- GitHub: [@Fauzan-A25](https://github.com/Fauzan-A25)
+- LinkedIn: [@fauzanahsanudin](https://linkedin.com/in/fauzanahsanudin)
 
 ## 🙏 Acknowledgments
 
@@ -364,4 +364,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ⭐ If you found this helpful, please consider giving it a star on GitHub!
 
-Made with ❤️ by Fauzan Ahsanudin Alfikri
+Made by Fauzan Ahsanudin Alfikri
