@@ -1,6 +1,7 @@
 import { memo, useState } from 'react';
 import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver';
 import { personalInfo, socialLinks } from '../../../data/portfolioData';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = memo(() => {
@@ -24,15 +25,41 @@ const Contact = memo(() => {
     setIsSubmitting(true);
     setFormStatus({ type: '', message: '' });
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // ⚠️ GANTI dengan credentials EmailJS Anda
+      // Cara dapat: https://dashboard.emailjs.com/
+      await emailjs.send(
+        'service_e0byds5',      // Service ID dari EmailJS Dashboard
+        'template_jtsltyj',     // Template ID dari EmailJS Dashboard
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: personalInfo.name,
+        },
+        '_RI8Nk23mYc9B8ZeX'       // Public Key dari EmailJS Dashboard
+      );
+
       setFormStatus({
         type: 'success',
         message: 'Thank you! Your message has been sent successfully.',
       });
       setFormData({ name: '', email: '', subject: '', message: '' });
+
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => {
+        setFormStatus({ type: '', message: '' });
+      }, 5000);
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setFormStatus({
+        type: 'error',
+        message: 'Oops! Something went wrong. Please try again or contact me directly.',
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 2000);
+    }
   };
 
   const contactInfo = [
@@ -182,7 +209,7 @@ const Contact = memo(() => {
 
               {formStatus.message && (
                 <div className={`form-status ${formStatus.type}`}>
-                  <i className={`bi ${formStatus.type === 'success' ? 'bi-check-circle' : 'bi-x-circle'}`}></i>
+                  <i className={`bi ${formStatus.type === 'success' ? 'bi-check-circle-fill' : 'bi-x-circle-fill'}`}></i>
                   {formStatus.message}
                 </div>
               )}
@@ -194,12 +221,12 @@ const Contact = memo(() => {
               >
                 {isSubmitting ? (
                   <>
-                    <span className="spinner-border spinner-border-sm"></span>
+                    <span className="spinner-border spinner-border-sm me-2"></span>
                     Sending...
                   </>
                 ) : (
                   <>
-                    <i className="bi bi-send"></i>
+                    <i className="bi bi-send me-2"></i>
                     Send Message
                   </>
                 )}

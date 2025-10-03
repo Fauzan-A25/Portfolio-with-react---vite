@@ -194,8 +194,32 @@ textarea.form-control {
   cursor: not-allowed;
 }
 
+/* Spinner */
 .spinner-border {
-  margin-right: 10px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: -0.125em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-border 0.75s linear infinite;
+}
+
+.spinner-border-sm {
+  width: 14px;
+  height: 14px;
+  border-width: 2px;
+}
+
+@keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.me-2 {
+  margin-right: 8px;
 }
 
 @media (max-width: 992px) {
