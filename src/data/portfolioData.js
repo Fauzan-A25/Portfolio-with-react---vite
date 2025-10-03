@@ -10,7 +10,7 @@ export const personalInfo = {
   email: 'fauzanahsanudin@gmail.com',
   gpa: '3.8',
   cvLink: 'https://docs.google.com/document/d/1zm9N7lCHsZPCChdz5zjfQK4wogPMqb5g/',
-  profileImage: '/images/Fauzan.png'
+  profileImage: './images/Fauzan.png'
 };
 
 export const socialLinks = {
@@ -28,7 +28,7 @@ export const projects = [
     shortDescription: 'ML application for predicting water safety',
     description:
       'An intelligent Streamlit-based Machine Learning application that predicts water potability using various chemical and physical parameters such as pH, sulfate concentration, and organic carbon. Built with MLPClassifier model to assess water safety for drinking purposes.',
-    image: '/images/Projects/Fossil_App_Screenshot.png',
+    image: './images/Projects/Fossil_App_Screenshot.png',
     tags: ['Machine Learning', 'Streamlit', 'Python', 'MLPClassifier', 'Data Science'],
     technologies: [
       'Python 3.9+',
@@ -68,7 +68,7 @@ export const projects = [
     shortDescription: 'XGBoost model for COPPA violation detection',
     description:
       'Advanced machine learning model using XGBoost to predict COPPA (Children\'s Online Privacy Protection Act) violation risks in mobile applications. Features comprehensive data preprocessing, feature engineering, and model optimization to identify apps that may violate children\'s privacy regulations.',
-    image: '/images/Projects/COPPA_Model.png',
+    image: './images/Projects/COPPA_Model.png',
     tags: ['XGBoost', 'Classification', 'Data Science', 'Privacy', 'COPPA'],
     technologies: [
       'Python 3.9+',
