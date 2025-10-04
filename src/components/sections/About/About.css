@@ -137,62 +137,285 @@
   flex-wrap: wrap;
 }
 
-/* Responsive */
-@media (max-width: 992px) {
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+/* ========================================
+   RESPONSIVE - MOBILE OPTIMIZED (COMPACT)
+======================================== */
 
-@media (max-width: 768px) {
+/* Tablet */
+@media (max-width: 992px) {
   .about-section {
     padding: 80px 0;
   }
 
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .stat-card {
+    padding: 22px 15px;
+  }
+}
+
+/* Mobile Large (Landscape phones) */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 0;
+  }
+
   .section-title {
-    font-size: 32px;
+    font-size: clamp(26px, 6vw, 32px);
+    margin-bottom: 10px;
+  }
+
+  .title-underline {
+    width: 55px;
+    height: 3px;
+    margin-bottom: 25px;
   }
 
   .about-text {
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 18px;
+    padding: 0 8px;
+  }
+
+  .about-highlights {
+    gap: 10px;
+    margin: 25px auto;
+    padding: 0 8px;
   }
 
   .highlight-item {
-    font-size: 15px;
+    padding: 12px 14px;
+    font-size: 13px;
+    gap: 10px;
+    border-radius: 8px;
+  }
+
+  .highlight-item:hover {
+    transform: translateX(3px);
+  }
+
+  .highlight-item i {
+    font-size: 18px;
   }
 
   .stats-grid {
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 30px auto;
+    padding: 0 8px;
+  }
+
+  .stat-card {
+    padding: 16px 12px;
+    border-radius: 8px;
+  }
+
+  .stat-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
   }
 
   .stat-value {
-    font-size: 32px;
+    font-size: 24px;
+    margin: 8px 0 5px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.3px;
+  }
+
+  .about-cta {
+    margin-top: 35px;
+    gap: 12px;
+    padding: 0 20px;
+  }
+
+  .modern-btn {
+    padding: 11px 24px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile Medium */
+@media (max-width: 576px) {
+  .about-section {
+    padding: 50px 0;
+  }
+
+  .section-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .title-underline {
+    width: 45px;
+    margin-bottom: 20px;
+  }
+
+  .about-text {
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 15px;
+  }
+
+  .about-highlights {
+    margin: 20px auto;
+    gap: 8px;
+  }
+
+  .highlight-item {
+    padding: 10px 12px;
+    font-size: 12px;
+    gap: 8px;
+  }
+
+  .highlight-item i {
+    font-size: 16px;
+  }
+
+  .stats-grid {
+    gap: 10px;
+    margin: 25px auto;
+    max-width: 320px;
+  }
+
+  .stat-card {
+    padding: 14px 10px;
+  }
+
+  .stat-icon {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+    margin: 6px 0 4px;
+  }
+
+  .stat-label {
+    font-size: 10px;
   }
 
   .about-cta {
     flex-direction: column;
-    max-width: 300px;
+    margin-top: 25px;
+    max-width: 260px;
     margin-left: auto;
     margin-right: auto;
+    gap: 10px;
   }
 
   .modern-btn {
     width: 100%;
     justify-content: center;
+    padding: 12px 20px;
+    font-size: 13px;
   }
 }
 
+/* Mobile Small */
 @media (max-width: 480px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
+  .about-section {
+    padding: 40px 0;
   }
 
-  .stat-card {
-    padding: 25px 15px;
+  .section-title {
+    font-size: 22px;
+  }
+
+  .about-text {
+    font-size: 12px;
+    padding: 0 5px;
+  }
+
+  .about-highlights {
+    padding: 0 5px;
+    gap: 8px;
   }
 
   .highlight-item {
-    padding: 12px 15px;
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    max-width: 240px;
+    gap: 8px;
+  }
+
+  .stat-card {
+    padding: 16px 12px;
+  }
+
+  .stat-icon {
+    font-size: 26px;
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+
+  .about-cta {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+}
+
+/* Mobile Extra Small */
+@media (max-width: 360px) {
+  .about-section {
+    padding: 35px 0;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .about-text {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .highlight-item {
+    padding: 8px 10px;
+    font-size: 10px;
+    gap: 6px;
+  }
+
+  .highlight-item i {
     font-size: 14px;
+  }
+
+  .stat-card {
+    padding: 14px 10px;
+  }
+
+  .stat-icon {
+    font-size: 24px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
+
+  .modern-btn {
+    padding: 11px 18px;
+    font-size: 12px;
   }
 }
