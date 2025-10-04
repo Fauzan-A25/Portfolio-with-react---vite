@@ -1,0 +1,246 @@
+/* Music Control Container */
+.music-control {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;  /* ← UBAH dari right jadi left */
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  padding: 12px 20px;
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: slideInLeft 0.5s ease-out;  /* ← UBAH animation */
+}
+
+.music-control:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 212, 170, 0.3);
+  border-color: var(--accent-color);
+}
+
+.music-control.loading {
+  opacity: 0.6;
+}
+
+/* Slide In Animation - UBAH dari Right jadi Left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);  /* ← UBAH dari 100px jadi -100px */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Music Toggle Button */
+.music-toggle {
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+}
+
+.music-toggle:hover:not(:disabled) {
+  transform: scale(1.15);
+  color: var(--accent-color);
+  filter: drop-shadow(0 0 8px var(--accent-color));
+}
+
+.music-toggle:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.music-toggle:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.music-toggle i {
+  display: block;
+}
+
+/* Volume Control */
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Volume Slider */
+.volume-slider {
+  width: 100px;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.volume-slider:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Webkit Slider Thumb */
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 212, 170, 0.4);
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 12px var(--accent-color);
+}
+
+.volume-slider::-webkit-slider-thumb:active {
+  transform: scale(1.1);
+}
+
+/* Firefox Slider Thumb */
+.volume-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 212, 170, 0.4);
+  transition: all 0.3s ease;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 12px var(--accent-color);
+}
+
+/* Volume Value */
+.volume-value {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  min-width: 35px;
+  text-align: right;
+  user-select: none;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .music-control {
+    bottom: 25px;
+    left: 25px;  /* ← UBAH */
+    padding: 10px 18px;
+  }
+  
+  .volume-slider {
+    width: 80px;
+  }
+}
+
+/* Mobile Large */
+@media (max-width: 768px) {
+  .music-control {
+    bottom: 90px;  /* Naikkan supaya tidak bentrok dengan ScrollToTop */
+    left: 20px;  /* ← UBAH */
+    padding: 10px 16px;
+    gap: 10px;
+  }
+  
+  .music-toggle {
+    font-size: 20px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .volume-slider {
+    width: 60px;
+  }
+  
+  .volume-value {
+    font-size: 11px;
+    min-width: 30px;
+  }
+}
+
+/* Mobile Medium */
+@media (max-width: 576px) {
+  .music-control {
+    bottom: 80px;
+    left: 16px;  /* ← UBAH */
+    padding: 8px 14px;
+  }
+  
+  .volume-slider {
+    width: 50px;
+  }
+  
+  .volume-value {
+    display: none;
+  }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) {
+  .music-control {
+    bottom: 75px;
+    left: 15px;  /* ← UBAH */
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  
+  .music-toggle {
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .volume-slider {
+    width: 45px;
+  }
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] .music-control {
+  background: rgba(26, 26, 26, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Light Theme Support */
+[data-theme="light"] .music-control {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .music-toggle {
+  color: var(--accent-color);
+}
+
+[data-theme="light"] .volume-slider {
+  background: rgba(0, 0, 0, 0.1);
+}

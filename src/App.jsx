@@ -5,6 +5,9 @@ import Hero from './components/sections/Hero/Hero';
 import ScrollToTop from './components/core/ScrollToTop/ScrollToTop';
 import ThemeToggle from './components/core/ThemeToggle/ThemeToggle';
 
+// ✨ Import Background Music ONLY
+import BackgroundMusic from './components/BackgroundMusic/BackgroundMusic';
+
 const About = lazy(() => import('./components/sections/About/About'));
 const Skills = lazy(() => import('./components/sections/Skills/Skills'));
 const Projects = lazy(() => import('./components/sections/Projects/Projects'));
@@ -15,6 +18,10 @@ function App() {
   return (
     <>
       <LoadingScreen />
+      
+      {/* ✨ Background Music Only */}
+      <BackgroundMusic />
+      
       <Navbar />
       <main>
         <Hero />
