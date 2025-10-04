@@ -5,7 +5,7 @@ const BackgroundMusic = () => {
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(0.3);
   const [loading, setLoading] = useState(true);
-  const [expanded, setExpanded] = useState(true); // ← State untuk expand/collapse
+  const [expanded, setExpanded] = useState(true);
   const audioRef = useRef(null);
   const canvasRef = useRef(null);
   const hasInteracted = useRef(false);
@@ -13,6 +13,25 @@ const BackgroundMusic = () => {
   const analyserRef = useRef(null);
   const audioContextRef = useRef(null);
 
+  // ← Setup audio context ONCE
+  const setupAudioContext = () => {
+    if (!audioContextRef.current) {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const analyser = audioContext.createAnalyser();
+      const source = audioContext.createMediaElementSource(audioRef.current);
+      
+      analyser.fftSize = 64;
+      source.connect(analyser);
+      analyser.connect(audioContext.destination);
+      
+      audioContextRef.current = audioContext;
+      analyserRef.current = analyser;
+      
+      visualize();
+    }
+  };
+
+  // ← Separate useEffect for audio setup (no dependencies)
   useEffect(() => {
     const audio = audioRef.current;
     audio.volume = volume;
@@ -60,24 +79,7 @@ const BackgroundMusic = () => {
         audioContextRef.current.close();
       }
     };
-  }, [volume]);
-
-  const setupAudioContext = () => {
-    if (!audioContextRef.current) {
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const analyser = audioContext.createAnalyser();
-      const source = audioContext.createMediaElementSource(audioRef.current);
-      
-      analyser.fftSize = 64;
-      source.connect(analyser);
-      analyser.connect(audioContext.destination);
-      
-      audioContextRef.current = audioContext;
-      analyserRef.current = analyser;
-      
-      visualize();
-    }
-  };
+  }, []); // ← HAPUS volume dari dependency
 
   const visualize = () => {
     const canvas = canvasRef.current;
@@ -145,10 +147,13 @@ const BackgroundMusic = () => {
   const handleVolumeChange = (e) => {
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
-    audioRef.current.volume = newVolume;
+    
+    // ← Update volume langsung tanpa trigger useEffect
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+    }
   };
 
-  // ← Toggle expand/collapse
   const toggleExpand = () => {
     setExpanded(!expanded);
   };
@@ -157,15 +162,13 @@ const BackgroundMusic = () => {
     <>
       <audio 
         ref={audioRef} 
-        src="./audio/teman-ryo.mp3" 
+        src="./audio/teman-ryo.mp3"
         loop 
         preload="auto"
         crossOrigin="anonymous"
       />
       
-      {/* Music Control with Expand/Collapse */}
       <div className={`music-control ${loading ? 'loading' : ''} ${expanded ? 'expanded' : 'collapsed'}`}>
-        {/* Play/Pause Button */}
         <button 
           onClick={togglePlay} 
           className="music-toggle"
@@ -180,9 +183,7 @@ const BackgroundMusic = () => {
           )}
         </button>
         
-        {/* Expandable Content */}
         <div className="expandable-content">
-          {/* Audio Visualizer Canvas */}
           <canvas 
             ref={canvasRef} 
             className="audio-visualizer"
@@ -190,7 +191,6 @@ const BackgroundMusic = () => {
             height="40"
           />
           
-          {/* Volume Control */}
           <div className="volume-control">
             <input
               type="range"
@@ -206,7 +206,6 @@ const BackgroundMusic = () => {
           </div>
         </div>
         
-        {/* Toggle Expand/Collapse Button */}
         <button 
           onClick={toggleExpand}
           className="expand-toggle"
