@@ -1,0 +1,1 @@
+import{r as s}from"./react-vendor-cxkclgJA.js";const f=(t={})=>{const n=s.useRef(null),[i,u]=s.useState(!1);return s.useEffect(()=>{const r=new IntersectionObserver(([o])=>{o.isIntersecting&&(u(!0),r.unobserve(o.target))},{threshold:.1,rootMargin:"0px 0px -50px 0px",...t}),e=n.current;return e&&r.observe(e),()=>{e&&r.unobserve(e)}},[t]),[n,i]};export{f as u};
