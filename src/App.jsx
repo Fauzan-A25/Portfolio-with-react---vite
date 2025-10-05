@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+
 import Navbar from './components/layout/Navbar/Navbar';
 import LoadingScreen from './components/layout/LoadingScreen/LoadingScreen';
 import Hero from './components/sections/Hero/Hero';
@@ -10,6 +11,8 @@ import BackgroundMusic from './components/BackgroundMusic/BackgroundMusic';
 
 const About = lazy(() => import('./components/sections/About/About'));
 const Skills = lazy(() => import('./components/sections/Skills/Skills'));
+const Experience = lazy(() => import('./components/sections/Experience/Experience'));
+const Certifications = lazy(() => import('./components/sections/Certifications/Certifications'));
 const Projects = lazy(() => import('./components/sections/Projects/Projects'));
 const Contact = lazy(() => import('./components/sections/Contact/Contact'));
 const Footer = lazy(() => import('./components/layout/Footer/Footer'));
@@ -18,23 +21,22 @@ function App() {
   return (
     <>
       <LoadingScreen />
-      
-      {/* ✨ Background Music Only */}
       <BackgroundMusic />
-      
+      {/* ✨ Background Music Only */}
       <Navbar />
-      <main>
-        <Hero />
-        <Suspense fallback={<div className="loading-section">Loading...</div>}>
-          <About />
-          <Skills />
-          <Projects />
-          <Contact />
-          <Footer />
-        </Suspense>
-      </main>
       <ThemeToggle />
       <ScrollToTop />
+      
+      <Suspense fallback={<div>Loading...</div>}>
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Certifications />
+        <Projects />
+        <Contact />
+        <Footer />
+      </Suspense>
     </>
   );
 }
