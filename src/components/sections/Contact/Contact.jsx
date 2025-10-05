@@ -100,47 +100,12 @@ const Contact = memo(() => {
         <div className="row">
           <div className="col-lg-5" data-aos="fade-right" data-aos-delay="200">
             <div className="contact-info-container">
-              <h3 className="contact-info-title">Contact Information</h3>
+              <h3 className="contact-info-title">Contact Me</h3>
               <p className="contact-info-text">
                 Feel free to reach out through any of these channels. I'm always open 
                 to discussing new projects and opportunities.
               </p>
 
-              <div className="contact-info-list">
-                {contactInfo.map((info, index) => (
-                  <div key={index} className="contact-info-item glass-card">
-                    <div className="contact-icon">
-                      <i className={`bi ${info.icon}`}></i>
-                    </div>
-                    <div className="contact-details">
-                      <h4>{info.title}</h4>
-                      {info.link ? (
-                        <a href={info.link}>{info.value}</a>
-                      ) : (
-                        <p>{info.value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="social-links">
-                <h4>Follow Me</h4>
-                <div className="social-icons">
-                  {socialLinksArray.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="social-icon"
-                      aria-label={social.label}
-                    >
-                      <i className={`bi ${social.icon}`}></i>
-                    </a>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
 

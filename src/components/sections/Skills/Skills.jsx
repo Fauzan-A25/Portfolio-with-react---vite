@@ -22,7 +22,7 @@ const Skills = memo(() => {
       <div className="container">
         <h2 className="section-title">Skills & Expertise</h2>
         <p className="section-subtitle">
-          Technologies and tools I work with to bring ideas to life
+          Technologies and tools I work with, measured by years of hands-on experience
         </p>
 
         <div className="skills-container">
@@ -52,11 +52,11 @@ const SkillCategory = memo(({ title, skills, delay }) => {
       <h3 className="category-title">{title}</h3>
       <div className="skills-list">
         {skills.map((skill, index) => (
-          <SkillBar 
+          <SkillCard 
             key={skill.name} 
             skill={skill} 
             isVisible={isVisible}
-            delay={index * 100}
+            delay={index * 50}
           />
         ))}
       </div>
@@ -64,35 +64,52 @@ const SkillCategory = memo(({ title, skills, delay }) => {
   );
 });
 
-const SkillBar = memo(({ skill, isVisible, delay }) => {
+const SkillCard = memo(({ skill, isVisible, delay }) => {
+  const getExperienceLabel = (years) => {
+    if (years < 1) return `${years * 12} months`;
+    if (years === 1) return '1 year';
+    return `${years} years`;
+  };
+
   return (
-    <div className="skill-item">
-      <div className="skill-header">
-        <div className="skill-name">
-          <i 
-            className={`bi ${skill.icon}`} 
-            style={{ color: skill.color || 'var(--accent-color)' }}
-          ></i>
-          <span>{skill.name}</span>
-        </div>
-        <span className="skill-percentage">{skill.level}%</span>
+    <div 
+      className={`skill-card ${isVisible ? 'fade-in' : ''}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      <div className="skill-icon-wrapper">
+        <i 
+          className={`bi ${skill.icon}`} 
+          style={{ color: skill.color || 'var(--accent-color)' }}
+        ></i>
       </div>
-      <div className="skill-bar-container">
-        <div 
-          className="skill-bar-fill"
-          style={{
-            width: isVisible ? `${skill.level}%` : '0%',
-            transitionDelay: `${delay}ms`,
-            background: skill.color ? `linear-gradient(90deg, ${skill.color}, ${skill.color}dd)` : 'var(--accent-gradient)',
-          }}
-        ></div>
+      
+      <div className="skill-content">
+        <div className="skill-header">
+          <h4 className="skill-name">{skill.name}</h4>
+          <span className="skill-experience">
+            {getExperienceLabel(skill.yearsOfExperience)}
+          </span>
+        </div>
+        
+        {skill.description && (
+          <p className="skill-description">{skill.description}</p>
+        )}
+        
+        {skill.projects && skill.projects.length > 0 && (
+          <div className="skill-meta">
+            <span className="project-count">
+              <i className="bi bi-folder-fill"></i>
+              {skill.projects.length} project{skill.projects.length > 1 ? 's' : ''}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
 });
 
 SkillCategory.displayName = 'SkillCategory';
-SkillBar.displayName = 'SkillBar';
+SkillCard.displayName = 'SkillCard';
 Skills.displayName = 'Skills';
 
 export default Skills;

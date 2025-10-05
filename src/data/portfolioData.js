@@ -90,7 +90,7 @@ export const projects = [
     category: 'Data Science',
     status: 'Completed',
     year: 2025,
-    duration: '3 months',
+    duration: '1 months',
     role: 'Data Scientist',
     teamSize: 1,
     githubUrl: 'https://github.com/Fauzan-A25/coppa-risk-prediction-findit2025-fauzan',
@@ -110,8 +110,7 @@ export const projects = [
     shortDescription: 'Deep learning for crowd density estimation',
     description:
       'Implementation of CSRNet (Congested Scene Recognition Network) using PyTorch for accurate crowd counting and density estimation. The model can handle both sparse and dense crowds, making it suitable for various surveillance and monitoring applications.',
-    image: '/images/projects/csrnet-crowd.png',
-    thumbnail: '/images/projects/csrnet-thumb.png',
+    image: './images/Projects/crowd_counting_csrnet.jpg',
     tags: ['Deep Learning', 'PyTorch', 'Computer Vision', 'CNN', 'CSRNet'],
     technologies: [
       'Python 3.9+',
@@ -129,12 +128,12 @@ export const projects = [
       'Visualization tools',
     ],
     category: 'Computer Vision',
-    status: 'In Progress',
+    status: 'Completed',
     year: 2025,
-    duration: '2 months',
+    duration: '1 weeks',
     role: 'ML Engineer',
     teamSize: 1,
-    githubUrl: 'https://github.com/Fauzan-A25/csrnet-crowd-counting',
+    githubUrl: 'https://github.com/Fauzan-A25/crowd-counting-with-csrnet-competition-hology',
     demoUrl: null,
     videoUrl: null,
     featured: true,
@@ -144,37 +143,236 @@ export const projects = [
       'Optimized learning rate to 1e-4',
     ],
   },
+  {
+    id: 4,
+    title: 'Pacific Data Viz Challenge - Climate Change & Disasters',
+    slug: 'pacific-dataviz-climate-disasters',
+    shortDescription: 'Data visualization project on Pacific climate change and disaster patterns',
+    description:
+      'An interactive data visualization project created for the Pacific Dataviz Challenge, analyzing climate change impacts and disaster patterns across Pacific Island nations. The project uses open data from the Pacific Data Hub to visualize trends in natural disasters, climate risks, and their effects on Pacific communities, supporting the Blue Pacific 2050 strategy objectives.',
+    image: './images/Projects/Pacific_DataViz_Screenshot.png',
+    tags: ['Data Visualization', 'Climate Change', 'Open Data', 'Pacific Islands', 'Dashboard'],
+    technologies: [
+      'Python',
+      'Pandas',
+      'Plotly/Matplotlib',
+      'JavaScript',
+      'D3.js',
+      'HTML/CSS',
+    ],
+    features: [
+      'Interactive climate change visualizations',
+      'Disaster pattern analysis across Pacific regions',
+      'Time-series data exploration',
+      'Geographic heat maps',
+      'Comparative regional statistics',
+      'Responsive dashboard design',
+    ],
+    category: 'Data Visualization',
+    status: 'Completed',
+    year: 2025,
+    duration: '3 months',
+    role: 'Data Visualization Developer',
+    teamSize: 1,
+    githubUrl: 'https://github.com/Fauzan-A25/Pacific-Data-Viz-challenge_Climate-Change-And-Disasters',
+    demoUrl: null,
+    videoUrl: null,
+    featured: true,
+    highlights: [
+      'Participated in Pacific Dataviz Challenge competition',
+      'Analyzed climate and disaster data from Pacific Data Hub',
+      'Created compelling visual narratives for Pacific Island climate issues',
+      'Contributed to Blue Pacific 2050 strategy awareness',
+    ],
+  },
+  {
+    id: 5,
+    title: 'AstroClassify - Stellar Classification System',
+    slug: 'astroclassify-stellar-classification',
+    shortDescription: 'ML-powered astronomical object classification system',
+    description:
+      'An intelligent astronomical object classification system powered by machine learning that identifies and classifies celestial objects (stars, galaxies, and quasars) based on spectral characteristics from the Sloan Digital Sky Survey (SDSS). Built with Streamlit interface featuring multiple ML models including Random Forest, XGBoost, and LightGBM for accurate stellar classification.',
+    image: './images/Projects/AstroClassify_Screenshot.png',
+    tags: ['Machine Learning', 'Astronomy', 'Classification', 'Streamlit', 'Data Science'],
+    technologies: [
+      'Python 3.x',
+      'Streamlit',
+      'Scikit-learn',
+      'XGBoost',
+      'LightGBM',
+      'Pandas',
+      'NumPy',
+      'Matplotlib',
+    ],
+    features: [
+      'Upload and process astronomical observation data (CSV)',
+      'Automatic data preprocessing pipeline',
+      'Multiple ML model selection (Random Forest, XGBoost, LightGBM)',
+      'Interactive classification visualizations',
+      'Confusion matrix and classification reports',
+      'Export prediction results',
+      'Real-time celestial object classification',
+    ],
+    category: 'Machine Learning',
+    status: 'Completed',
+    year: 2024,
+    duration: '2 months',
+    role: 'ML Developer',
+    teamSize: 2,
+    githubUrl: 'https://github.com/Fauzan-A25/AstroClassify',
+    demoUrl: null,
+    videoUrl: null,
+    featured: true,
+    highlights: [
+      'Trained on SDSS spectral observation dataset',
+      'Three-class classification: GALAXY, STAR, and QSO (Quasar)',
+      'Implemented ensemble learning with multiple optimized models',
+      'Comprehensive model evaluation with confusion matrices and reports',
+      'Interactive Streamlit dashboard for astronomy enthusiasts and researchers',
+    ],
+  }
 ];
 
 export const skills = {
   programming: [
-    { name: 'Python', level: 90, icon: 'bi-file-code', color: '#3776AB' },
-    { name: 'JavaScript', level: 85, icon: 'bi-braces', color: '#F7DF1E' },
-    { name: 'SQL', level: 80, icon: 'bi-database', color: '#00758F' },
-    { name: 'R', level: 75, icon: 'bi-bar-chart', color: '#276DC3' },
-    { name: 'Java', level: 70, icon: 'bi-code-slash', color: '#007396' },
+    {
+      name: 'Python',
+      icon: 'bi-file-code',
+      color: '#3776AB',
+      yearsOfExperience: 2,
+      description: 'Machine Learning, Data Analysis, Backend Development',
+      projects: ['CSRNet Crowd Counting', 'FindIT2025', 'ML Pipeline', 'Data Science Portfolio']
+    },
+    {
+      name: 'JavaScript',
+      icon: 'bi-braces',
+      color: '#F7DF1E',
+      yearsOfExperience: 1,
+      description: 'React, Node.js, Full-stack Web Development',
+      projects: ['Portfolio Website', 'E-commerce Dashboard', 'Real-time Chat App']
+    },
+    {
+      name: 'Java',
+      icon: 'bi-cup-hot',
+      color: '#007396',
+      yearsOfExperience: 1,
+      description: 'OOP, Spring Boot, Android Development',
+      projects: ['Mobile App', 'Backend API', 'University Projects']
+    },
+    {
+      name: 'SQL',
+      icon: 'bi-database',
+      color: '#4479A1',
+      yearsOfExperience: 2,
+      description: 'PostgreSQL, MySQL, Database Design & Optimization',
+      projects: ['E-commerce Database', 'Analytics Dashboard', 'Supabase Integration']
+    }
   ],
+  
   dataScience: [
-    { name: 'Machine Learning', level: 88, icon: 'bi-robot', color: '#00d4aa' },
-    { name: 'Data Analysis', level: 90, icon: 'bi-graph-up', color: '#00a8e8' },
-    { name: 'Statistics', level: 85, icon: 'bi-calculator', color: '#7b2cbf' },
-    { name: 'Deep Learning', level: 80, icon: 'bi-cpu', color: '#ff006e' },
-    { name: 'Data Visualization', level: 87, icon: 'bi-pie-chart', color: '#fb5607' },
+    {
+      name: 'TensorFlow',
+      icon: 'bi-diagram-3',
+      color: '#FF6F00',
+      yearsOfExperience: 2,
+      description: 'Deep Learning, Computer Vision, Model Training',
+      projects: ['CSRNet Implementation', 'Image Classification', 'Neural Networks']
+    },
+    {
+      name: 'PyTorch',
+      icon: 'bi-lightning',
+      color: '#EE4C2C',
+      yearsOfExperience: 2,
+      description: 'Research Projects, Model Fine-tuning',
+      projects: ['Crowd Counting Research', 'Transfer Learning']
+    },
+    {
+      name: 'Pandas & NumPy',
+      icon: 'bi-table',
+      color: '#150458',
+      yearsOfExperience: 2,
+      description: 'Data Manipulation, Statistical Analysis',
+      projects: ['Data Preprocessing Pipeline', 'Analytics Tools', 'Research Analysis']
+    },
+    {
+      name: 'Scikit-learn',
+      icon: 'bi-graph-up',
+      color: '#F7931E',
+      yearsOfExperience: 2,
+      description: 'Classical ML, Model Evaluation, Feature Engineering',
+      projects: ['Prediction Models', 'Classification Tasks', 'Academic Projects']
+    }
   ],
+  
   tools: [
-    { name: 'TensorFlow', level: 85, icon: 'bi-gear', color: '#FF6F00' },
-    { name: 'Pandas', level: 90, icon: 'bi-table', color: '#150458' },
-    { name: 'Scikit-learn', level: 88, icon: 'bi-diagram-3', color: '#F7931E' },
-    { name: 'Streamlit', level: 85, icon: 'bi-window', color: '#FF4B4B' },
-    { name: 'PyTorch', level: 82, icon: 'bi-lightning', color: '#EE4C2C' },
-    { name: 'Git', level: 88, icon: 'bi-git', color: '#F05032' },
+    {
+      name: 'Git & GitHub',
+      icon: 'bi-git',
+      color: '#F05032',
+      yearsOfExperience: 3,
+      description: 'Version Control, Collaboration, CI/CD',
+      projects: ['All Projects', 'Open Source Contributions']
+    },
+    {
+      name: 'React',
+      icon: 'bi-bootstrap',
+      color: '#61DAFB',
+      yearsOfExperience: 1,
+      description: 'Component Architecture, Hooks, State Management',
+      projects: ['Portfolio Website', 'Web Applications', 'UI Components']
+    },
+    {
+      name: 'Docker',
+      icon: 'bi-box-seam',
+      color: '#2496ED',
+      yearsOfExperience: 1,
+      description: 'Containerization, Deployment, Environment Setup',
+      projects: ['ML Model Deployment', 'Development Environments']
+    },
+    {
+      name: 'Jupyter Notebook',
+      icon: 'bi-journal-code',
+      color: '#F37626',
+      yearsOfExperience: 2,
+      description: 'Data Analysis, Research Documentation, Prototyping',
+      projects: ['Data Science Projects', 'Research Experiments', 'Tutorials']
+    }
   ],
+  
   soft: [
-    { name: 'Problem Solving', level: 92, icon: 'bi-puzzle' },
-    { name: 'Team Collaboration', level: 88, icon: 'bi-people' },
-    { name: 'Communication', level: 85, icon: 'bi-chat-dots' },
-    { name: 'Critical Thinking', level: 90, icon: 'bi-lightbulb' },
-  ],
+    {
+      name: 'Problem Solving',
+      icon: 'bi-lightbulb',
+      color: '#FFD700',
+      yearsOfExperience: 3,
+      description: 'Analytical thinking, Algorithm design, Debugging',
+      projects: ['All Technical Projects']
+    },
+    {
+      name: 'Research & Analysis',
+      icon: 'bi-search',
+      color: '#9C27B0',
+      yearsOfExperience: 2,
+      description: 'Academic research, Literature review, Data interpretation',
+      projects: ['Academic Papers', 'Research Projects', 'Journal Analysis']
+    },
+    {
+      name: 'Documentation',
+      icon: 'bi-file-text',
+      color: '#00BCD4',
+      yearsOfExperience: 3,
+      description: 'Technical writing, Code documentation, README creation',
+      projects: ['GitHub Projects', 'Technical Reports', 'API Documentation']
+    },
+    {
+      name: 'Team Collaboration',
+      icon: 'bi-people',
+      color: '#4CAF50',
+      yearsOfExperience: 4,
+      description: 'Agile methodologies, Code reviews, Communication',
+      projects: ['Group Projects', 'Open Source', 'Academic Teams']
+    }
+  ]
 };
 
 export const experiences = [

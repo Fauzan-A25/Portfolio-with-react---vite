@@ -6,9 +6,10 @@ import './Projects.css';
 const Projects = memo(() => {
   const [elementRef, isVisible] = useIntersectionObserver();
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [showAll, setShowAll] = useState(false); // ✅ NEW: State untuk show all
+  const [showAll, setShowAll] = useState(false); // ✅ State untuk show all
+  const [itemsToShow, setItemsToShow] = useState(3); // ✅ NEW: Limit awal 3 items
 
-  // ✅ UPDATED: Filter logic yang benar
+  // ✅ UPDATED: Filter logic dengan limit
   const getFilteredProjects = () => {
     let filtered = projects;
 
@@ -17,17 +18,36 @@ const Projects = memo(() => {
       filtered = filtered.filter(p => p.category === selectedCategory);
     }
 
-    // Show only featured or all
+    // ✅ NEW: Slice berdasarkan showAll
     if (!showAll) {
-      filtered = filtered.filter(p => p.featured);
+      filtered = filtered.slice(0, itemsToShow);
     }
 
     return filtered;
   };
 
   const filteredProjects = getFilteredProjects();
-  const totalProjects = projects.length;
-  const featuredCount = projects.filter(p => p.featured).length;
+  const totalProjects = selectedCategory === 'All' 
+    ? projects.length 
+    : projects.filter(p => p.category === selectedCategory).length;
+
+  // ✅ NEW: Handle View All button
+  const handleViewAll = () => {
+    setShowAll(true);
+  };
+
+  // ✅ NEW: Handle Show Less button
+  const handleShowLess = () => {
+    setShowAll(false);
+    setItemsToShow(3); // Reset ke 3 items
+  };
+
+  // ✅ NEW: Reset showAll ketika kategori berubah
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setShowAll(false); // Reset ke tampilan awal (3 items)
+    setItemsToShow(3);
+  };
 
   return (
     <section
@@ -43,8 +63,8 @@ const Projects = memo(() => {
           </h2>
           <p className="section-subtitle">
             {showAll 
-              ? `Displaying all ${totalProjects} projects`
-              : 'Showcasing my latest work in data science and machine learning'
+              ? `Displaying all ${totalProjects} projects${selectedCategory !== 'All' ? ` in ${selectedCategory}` : ''}`
+              : `Showcasing latest work in ${selectedCategory === 'All' ? 'data science and machine learning' : selectedCategory}`
             }
           </p>
         </div>
@@ -55,7 +75,7 @@ const Projects = memo(() => {
             <button
               key={category}
               className={`filter-btn ${selectedCategory === category ? 'active' : ''}`}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => handleCategoryChange(category)}
             >
               {category}
             </button>
@@ -77,25 +97,27 @@ const Projects = memo(() => {
         </div>
 
         {/* View All / Show Less Button */}
-        <div className="projects-footer">
-          {!showAll ? (
-            <button 
-              className="modern-btn btn-outline"
-              onClick={() => setShowAll(true)}
-            >
-              <i className="bi bi-grid-3x3"></i>
-              View All Projects ({totalProjects})
-            </button>
-          ) : (
-            <button 
-              className="modern-btn btn-outline"
-              onClick={() => setShowAll(false)}
-            >
-              <i className="bi bi-star"></i>
-              Show Featured Only ({featuredCount})
-            </button>
-          )}
-        </div>
+        {totalProjects > 3 && (
+          <div className="projects-footer">
+            {!showAll ? (
+              <button 
+                className="modern-btn btn-outline"
+                onClick={handleViewAll}
+              >
+                <i className="bi bi-grid-3x3"></i>
+                View All Projects ({totalProjects})
+              </button>
+            ) : (
+              <button 
+                className="modern-btn btn-outline"
+                onClick={handleShowLess}
+              >
+                <i className="bi bi-eye-slash"></i>
+                Show Less
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );
