@@ -32,6 +32,79 @@
   box-shadow: 0 6px 30px rgba(0, 212, 170, 0.6);
 }
 
+/* Anime theme styling */
+[data-theme="anime"] .scroll-to-top {
+  background: linear-gradient(135deg, #ff1744 0%, #f50057 50%, #ff4081 100%);
+  box-shadow: 0 4px 20px rgba(255, 23, 68, 0.5),
+              0 0 15px rgba(245, 0, 87, 0.4);
+  border: 2px solid rgba(255, 64, 129, 0.6);
+  animation: animeFloat 3s ease-in-out infinite;
+}
+
+[data-theme="anime"] .scroll-to-top.visible {
+  animation: animeFloat 3s ease-in-out infinite, 
+             neonGlowPulse 2s ease-in-out infinite;
+}
+
+[data-theme="anime"] .scroll-to-top:hover {
+  transform: translateY(-8px) scale(1.1);
+  background: linear-gradient(135deg, #ff1744 0%, #00e5ff 100%);
+  box-shadow: 0 8px 40px rgba(255, 23, 68, 0.7),
+              0 0 25px rgba(0, 229, 255, 0.6),
+              inset 0 0 15px rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(0, 229, 255, 0.8);
+}
+
+/* Icon glow effect for anime theme */
+[data-theme="anime"] .scroll-to-top i {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
+  animation: iconBounce 1s ease-in-out infinite;
+}
+
+[data-theme="anime"] .scroll-to-top:hover i {
+  filter: drop-shadow(0 0 12px rgba(0, 229, 255, 1));
+  transform: translateY(-2px);
+}
+
+/* Floating animation */
+@keyframes animeFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Neon glow pulse animation */
+@keyframes neonGlowPulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(255, 23, 68, 0.5),
+                0 0 15px rgba(245, 0, 87, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(255, 23, 68, 0.8),
+                0 0 25px rgba(245, 0, 87, 0.7);
+  }
+}
+
+/* Icon bounce animation */
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Add trail effect on click for anime theme */
+[data-theme="anime"] .scroll-to-top:active {
+  transform: translateY(-3px) scale(0.95);
+  box-shadow: 0 4px 15px rgba(255, 23, 68, 0.9),
+              0 0 20px rgba(0, 229, 255, 0.8);
+}
+
 @media (max-width: 768px) {
   .scroll-to-top {
     bottom: 80px;
@@ -39,5 +112,14 @@
     width: 45px;
     height: 45px;
     font-size: 18px;
+  }
+
+  [data-theme="anime"] .scroll-to-top {
+    border: 1.5px solid rgba(255, 64, 129, 0.6);
+  }
+
+  /* Reduce animation intensity on mobile for performance */
+  [data-theme="anime"] .scroll-to-top.visible {
+    animation: animeFloat 3s ease-in-out infinite;
   }
 }

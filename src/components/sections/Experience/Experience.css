@@ -456,3 +456,444 @@
     font-size: 14px;
   }
 }
+
+/* ========== ANIME THEME STYLES ========== */
+
+[data-theme="anime"] .experience-section {
+  background: linear-gradient(180deg,
+    rgba(20, 0, 35, 0.98) 0%,
+    rgba(10, 0, 20, 0.95) 50%,
+    rgba(20, 0, 35, 0.98) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated digital rain effect */
+[data-theme="anime"] .experience-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(transparent 50%, rgba(0, 229, 255, 0.03) 50%),
+    linear-gradient(90deg, transparent 50%, rgba(255, 23, 68, 0.03) 50%);
+  background-size: 100px 100px, 100px 100px;
+  animation: digitalRain 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes digitalRain {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 0 100px, 100px 0; }
+}
+
+/* Floating particles */
+[data-theme="anime"] .experience-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 10% 20%, rgba(0, 229, 255, 0.5), transparent),
+    radial-gradient(2px 2px at 80% 30%, rgba(255, 23, 68, 0.5), transparent),
+    radial-gradient(1px 1px at 50% 60%, rgba(255, 64, 129, 0.6), transparent),
+    radial-gradient(1px 1px at 30% 80%, rgba(0, 229, 255, 0.4), transparent);
+  background-size: 200% 200%;
+  animation: particleShift 25s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes particleShift {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+
+/* Filter buttons with neon effect */
+[data-theme="anime"] .filter-btn {
+  background: rgba(17, 0, 32, 0.5);
+  border: 2px solid rgba(255, 23, 68, 0.3);
+  color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+[data-theme="anime"] .filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.3), transparent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+[data-theme="anime"] .filter-btn:hover::before {
+  width: 200px;
+  height: 200px;
+}
+
+[data-theme="anime"] .filter-btn:hover {
+  background: rgba(255, 23, 68, 0.15);
+  border-color: rgba(0, 229, 255, 0.6);
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
+}
+
+[data-theme="anime"] .filter-btn.active {
+  background: linear-gradient(135deg, rgba(255, 23, 68, 0.4), rgba(0, 229, 255, 0.4));
+  border-color: rgba(0, 229, 255, 0.8);
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 1);
+  box-shadow: 0 4px 20px rgba(255, 23, 68, 0.5),
+              0 0 30px rgba(0, 229, 255, 0.4);
+}
+
+/* Timeline line with neon glow */
+[data-theme="anime"] .timeline-line {
+  background: linear-gradient(180deg, 
+    #ff1744 0%, 
+    #00e5ff 50%, 
+    #ff4081 100%);
+  box-shadow: 0 0 20px rgba(255, 23, 68, 0.6),
+              0 0 40px rgba(0, 229, 255, 0.4);
+  opacity: 0.8;
+  width: 4px;
+  animation: lineGlow 3s ease-in-out infinite;
+}
+
+@keyframes lineGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 23, 68, 0.6),
+                0 0 40px rgba(0, 229, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 23, 68, 0.9),
+                0 0 50px rgba(0, 229, 255, 0.7);
+  }
+}
+
+/* Timeline dot with holographic effect */
+[data-theme="anime"] .timeline-dot {
+  background: linear-gradient(135deg, #ff1744 0%, #00e5ff 100%);
+  box-shadow: 0 0 0 10px rgba(17, 0, 32, 0.9),
+              0 0 30px rgba(255, 23, 68, 0.6),
+              0 0 50px rgba(0, 229, 255, 0.4);
+  animation: dotPulse 2s ease-in-out infinite;
+  position: relative;
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 10px rgba(17, 0, 32, 0.9),
+                0 0 30px rgba(255, 23, 68, 0.6),
+                0 0 50px rgba(0, 229, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(17, 0, 32, 0.9),
+                0 0 40px rgba(255, 23, 68, 0.8),
+                0 0 60px rgba(0, 229, 255, 0.6);
+  }
+}
+
+/* Rotating ring around dot */
+[data-theme="anime"] .timeline-dot::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid transparent;
+  border-top-color: #ff1744;
+  border-right-color: #00e5ff;
+  border-radius: 50%;
+  animation: rotateRing 3s linear infinite;
+}
+
+@keyframes rotateRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+[data-theme="anime"] .experience-card:hover .timeline-dot {
+  transform: translateX(-50%) scale(1.2);
+  box-shadow: 0 0 0 10px rgba(17, 0, 32, 0.9),
+              0 0 50px rgba(255, 23, 68, 0.9),
+              0 0 80px rgba(0, 229, 255, 0.7);
+}
+
+[data-theme="anime"] .experience-card:hover .timeline-dot::before {
+  animation-duration: 1.5s;
+}
+
+/* Experience content card */
+[data-theme="anime"] .experience-content {
+  background: rgba(17, 0, 32, 0.6);
+  border: 2px solid rgba(255, 23, 68, 0.3);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+              inset 0 0 40px rgba(255, 23, 68, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scan line animation */
+[data-theme="anime"] .experience-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 229, 255, 0.1), 
+    transparent);
+  transition: left 0.8s ease;
+}
+
+[data-theme="anime"] .experience-card:hover .experience-content::before {
+  left: 100%;
+}
+
+[data-theme="anime"] .experience-card:hover .experience-content {
+  background: rgba(17, 0, 32, 0.8);
+  border-color: rgba(0, 229, 255, 0.8);
+  box-shadow: 0 12px 50px rgba(255, 23, 68, 0.4),
+              0 0 60px rgba(0, 229, 255, 0.3),
+              inset 0 0 50px rgba(0, 229, 255, 0.05);
+  transform: translateY(-8px);
+}
+
+/* Experience title */
+[data-theme="anime"] .experience-title {
+  background: linear-gradient(135deg, #ffffff 0%, #00e5ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.4));
+}
+
+[data-theme="anime"] .experience-card:hover .experience-title {
+  filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.8));
+  animation: titleShimmer 1s ease-in-out;
+}
+
+@keyframes titleShimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+/* Company info */
+[data-theme="anime"] .company-name,
+[data-theme="anime"] .location {
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.2);
+}
+
+[data-theme="anime"] .company-name i,
+[data-theme="anime"] .location i {
+  color: #00e5ff;
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.6));
+}
+
+/* Type badges with enhanced gradients */
+[data-theme="anime"] .type-badge[data-type="internship"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4),
+              0 0 20px rgba(118, 75, 162, 0.3);
+  border: 1px solid rgba(118, 75, 162, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="anime"] .type-badge[data-type="organizational"] {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4),
+              0 0 20px rgba(245, 87, 108, 0.3);
+  border: 1px solid rgba(245, 87, 108, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="anime"] .experience-card:hover .type-badge {
+  box-shadow: 0 6px 25px rgba(240, 147, 251, 0.6),
+              0 0 30px rgba(245, 87, 108, 0.5);
+}
+
+/* Period with neon accent */
+[data-theme="anime"] .experience-period {
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+}
+
+[data-theme="anime"] .experience-period i {
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.8));
+}
+
+[data-theme="anime"] .duration {
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.3);
+}
+
+/* Description */
+[data-theme="anime"] .experience-description {
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 3px rgba(0, 229, 255, 0.1);
+}
+
+/* Details section */
+[data-theme="anime"] .details-title {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 23, 68, 0.4);
+}
+
+[data-theme="anime"] .details-title i {
+  color: #ff4081;
+  filter: drop-shadow(0 0 8px rgba(255, 64, 129, 0.8));
+}
+
+[data-theme="anime"] .responsibilities-list li {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+[data-theme="anime"] .responsibilities-list li::before {
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
+}
+
+/* Technology tags */
+[data-theme="anime"] .tech-tag {
+  background: rgba(0, 229, 255, 0.15);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  color: #00e5ff;
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
+  box-shadow: 0 2px 10px rgba(0, 229, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="anime"] .tech-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent);
+  transition: left 0.5s ease;
+}
+
+[data-theme="anime"] .tech-tag:hover::before {
+  left: 100%;
+}
+
+[data-theme="anime"] .tech-tag:hover {
+  background: rgba(0, 229, 255, 0.25);
+  border-color: rgba(0, 229, 255, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.4);
+}
+
+/* Achievements section */
+[data-theme="anime"] .experience-achievements {
+  background: rgba(255, 215, 0, 0.08);
+  border-left: 4px solid #FFD700;
+  box-shadow: inset 0 0 30px rgba(255, 215, 0, 0.1),
+              0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="anime"] .achievements-title {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+[data-theme="anime"] .achievements-title i {
+  color: #FFD700;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+  animation: starShine 2s ease-in-out infinite;
+}
+
+@keyframes starShine {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+    transform: scale(1.1);
+  }
+}
+
+[data-theme="anime"] .achievements-list li {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="anime"] .achievements-list li::before {
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  animation: starTwinkle 3s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  [data-theme="anime"] .timeline-line {
+    box-shadow: 0 0 15px rgba(255, 23, 68, 0.5),
+                0 0 30px rgba(0, 229, 255, 0.3);
+  }
+
+  [data-theme="anime"] .timeline-dot {
+    box-shadow: 0 0 0 8px rgba(17, 0, 32, 0.9),
+                0 0 25px rgba(255, 23, 68, 0.5),
+                0 0 40px rgba(0, 229, 255, 0.3);
+  }
+
+  [data-theme="anime"] .experience-card:hover .experience-content {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 480px) {
+  [data-theme="anime"] .experience-section::before,
+  [data-theme="anime"] .experience-section::after {
+    animation-duration: 30s;
+  }
+
+  [data-theme="anime"] .filter-btn {
+    border-width: 1.5px;
+  }
+
+  [data-theme="anime"] .timeline-line {
+    width: 3px;
+  }
+
+  [data-theme="anime"] .timeline-dot::before {
+    animation-duration: 4s;
+  }
+
+  [data-theme="anime"] .experience-content {
+    border-width: 1.5px;
+  }
+
+  [data-theme="anime"] .tech-tag:hover {
+    transform: translateY(-2px);
+  }
+}

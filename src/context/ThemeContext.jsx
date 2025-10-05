@@ -4,7 +4,11 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'dark';
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme && ['light', 'dark', 'anime'].includes(savedTheme)) {
+      return savedTheme;
+    }
+    return 'dark';
   });
 
   useEffect(() => {
@@ -13,12 +17,29 @@ export const ThemeProvider = ({ children }) => {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
+    setTheme((prevTheme) => {
+      if (prevTheme === 'light') return 'dark';
+      if (prevTheme === 'dark') return 'anime';
+      return 'light';
+    });
   };
 
-  const value = useMemo(() => ({ theme, toggleTheme }), [theme]);
+  const value = useMemo(
+    () => ({ 
+      theme, 
+      toggleTheme,
+      isLight: theme === 'light',
+      isDark: theme === 'dark',
+      isAnime: theme === 'anime'
+    }), 
+    [theme]
+  );
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={value}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
 export const useTheme = () => {

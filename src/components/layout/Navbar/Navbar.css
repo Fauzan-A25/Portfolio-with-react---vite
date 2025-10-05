@@ -136,3 +136,390 @@
     right: 20px;
   }
 }
+
+/* ========================================
+   ANIME THEME STYLES - FINAL FIX
+======================================== */
+
+/* Base navbar - MUST have transition */
+[data-theme="anime"] .navbar {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transform: translateY(0);
+  transition: transform 0.3s ease, background 0.3s ease, padding 0.3s ease;
+}
+
+/* Ensure navbar content is above pseudo-elements */
+[data-theme="anime"] .navbar .container {
+  position: relative;
+  z-index: 10;
+}
+
+/* Transparent state for anime theme */
+[data-theme="anime"] .navbar:not(.navbar-scrolled) {
+  background: linear-gradient(180deg, 
+    rgba(10, 0, 20, 0.6) 0%, 
+    transparent 100%);
+  backdrop-filter: blur(5px);
+  padding: 20px 0;
+}
+
+/* Scrolled state with neon effect */
+[data-theme="anime"] .navbar.navbar-scrolled {
+  background: rgba(17, 0, 32, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 23, 68, 0.5) 25%,
+    rgba(0, 229, 255, 0.5) 50%,
+    rgba(255, 64, 129, 0.5) 75%,
+    transparent 100%) 1;
+  box-shadow: 0 4px 30px rgba(255, 23, 68, 0.2),
+              0 0 50px rgba(0, 229, 255, 0.1);
+  padding: 15px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated scan line effect */
+[data-theme="anime"] .navbar-scrolled::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 229, 255, 0.1), 
+    transparent);
+  animation: scanLine 3s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes scanLine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Cyber grid background - DESKTOP ONLY */
+@media (min-width: 769px) {
+  [data-theme="anime"] .navbar-scrolled::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(90deg, transparent 49%, rgba(0, 229, 255, 0.03) 49%, rgba(0, 229, 255, 0.03) 51%, transparent 51%),
+      linear-gradient(0deg, transparent 49%, rgba(255, 23, 68, 0.03) 49%, rgba(255, 23, 68, 0.03) 51%, transparent 51%);
+    background-size: 50px 50px;
+    pointer-events: none;
+    opacity: 0.3;
+    z-index: 0;
+  }
+}
+
+/* Logo with neon glow */
+[data-theme="anime"] .logo {
+  background: linear-gradient(135deg, 
+    #ff1744 0%, 
+    #00e5ff 50%, 
+    #ff4081 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 10px rgba(255, 23, 68, 0.5))
+          drop-shadow(0 0 20px rgba(0, 229, 255, 0.3));
+  animation: logoGlow 3s ease-in-out infinite;
+  position: relative;
+  display: inline-block;
+}
+
+@keyframes logoGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(255, 23, 68, 0.5))
+            drop-shadow(0 0 20px rgba(0, 229, 255, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(255, 23, 68, 0.8))
+            drop-shadow(0 0 30px rgba(0, 229, 255, 0.6));
+  }
+}
+
+/* Anime sparkle effect on logo - DESKTOP ONLY */
+@media (min-width: 769px) {
+  [data-theme="anime"] .logo::before {
+    content: '✦';
+    position: absolute;
+    top: -5px;
+    right: -15px;
+    font-size: 12px;
+    color: #00e5ff;
+    animation: sparkle 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.8));
+    pointer-events: none;
+  }
+
+  @keyframes sparkle {
+    0%, 100% {
+      opacity: 0;
+      transform: scale(0.5) rotate(0deg);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1) rotate(180deg);
+    }
+  }
+
+  [data-theme="anime"] .navbar-brand:hover .logo {
+    animation: logoGlow 1s ease-in-out infinite, logoPulse 0.5s ease-in-out;
+  }
+
+  @keyframes logoPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+}
+
+/* Nav links with neon effect */
+[data-theme="anime"] .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+/* Desktop hover effects */
+@media (min-width: 769px) {
+  [data-theme="anime"] .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, 
+      rgba(0, 229, 255, 0.3), 
+      transparent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+    z-index: -1;
+  }
+
+  [data-theme="anime"] .nav-link:hover::before,
+  [data-theme="anime"] .nav-link.active::before {
+    width: 120%;
+    height: 200%;
+  }
+
+  [data-theme="anime"] .nav-link::after {
+    height: 3px;
+    background: linear-gradient(90deg, 
+      #ff1744 0%, 
+      #00e5ff 50%, 
+      #ff4081 100%);
+    box-shadow: 0 0 10px rgba(255, 23, 68, 0.6),
+                0 0 20px rgba(0, 229, 255, 0.4);
+  }
+
+  [data-theme="anime"] .nav-link:hover,
+  [data-theme="anime"] .nav-link.active {
+    color: #00e5ff;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.8),
+                 0 0 20px rgba(255, 23, 68, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Glitch effect on hover */
+  [data-theme="anime"] .nav-link:hover {
+    animation: glitch 0.3s ease-in-out;
+  }
+
+  @keyframes glitch {
+    0%, 100% { transform: translateY(-2px); }
+    25% { transform: translate(-1px, -2px); }
+    75% { transform: translate(1px, -2px); }
+  }
+}
+
+/* Mobile menu toggle for anime theme */
+[data-theme="anime"] .mobile-menu-toggle {
+  position: relative;
+  z-index: 1001;
+}
+
+[data-theme="anime"] .mobile-menu-toggle span {
+  background: linear-gradient(90deg, #ff1744, #00e5ff);
+  box-shadow: 0 0 10px rgba(255, 23, 68, 0.5);
+}
+
+[data-theme="anime"] .mobile-menu-toggle:hover span {
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
+}
+
+/* ========================================
+   MOBILE STYLES - OPTIMIZED
+======================================== */
+
+@media (max-width: 768px) {
+  /* Mobile menu container */
+  [data-theme="anime"] .nav-links {
+    background: rgba(17, 0, 32, 0.98);
+    backdrop-filter: blur(30px);
+    border: 2px solid rgba(255, 23, 68, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(255, 23, 68, 0.3),
+                0 0 50px rgba(0, 229, 255, 0.2),
+                inset 0 0 50px rgba(255, 23, 68, 0.05);
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+    width: auto;
+    min-width: 200px;
+    max-width: 250px;
+    transition: right 0.3s ease;
+    z-index: 999;
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
+  }
+
+  /* Animated background glow */
+  [data-theme="anime"] .nav-links::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, 
+      rgba(255, 23, 68, 0.08) 0%, 
+      transparent 50%);
+    animation: mobileMenuGlow 6s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes mobileMenuGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Mobile menu active state */
+  [data-theme="anime"] .nav-links.mobile-active {
+    right: 20px;
+    animation: slideInNeon 0.4s ease-out;
+  }
+
+  @keyframes slideInNeon {
+    0% {
+      right: -100%;
+      opacity: 0;
+      filter: blur(5px);
+    }
+    100% {
+      right: 20px;
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  /* Individual nav links */
+  [data-theme="anime"] .nav-links .nav-link {
+    padding: 8px 0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    text-align: left;
+  }
+
+  /* Remove desktop hover effects on mobile */
+  [data-theme="anime"] .nav-links .nav-link::before {
+    display: none;
+  }
+
+  [data-theme="anime"] .nav-links .nav-link::after {
+    display: none;
+  }
+
+  /* Mobile hover/active state */
+  [data-theme="anime"] .nav-links .nav-link:hover,
+  [data-theme="anime"] .nav-links .nav-link.active {
+    background: rgba(255, 23, 68, 0.1);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    padding-left: 10px;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+    color: #00e5ff;
+  }
+
+  /* Simplify logo on mobile */
+  [data-theme="anime"] .logo {
+    filter: drop-shadow(0 0 8px rgba(255, 23, 68, 0.4))
+            drop-shadow(0 0 15px rgba(0, 229, 255, 0.2));
+    animation: none;
+  }
+
+  /* Remove sparkle on mobile */
+  [data-theme="anime"] .logo::before {
+    display: none;
+  }
+
+  /* Simplified navbar scrolled */
+  [data-theme="anime"] .navbar-scrolled {
+    background: rgba(17, 0, 32, 0.98);
+    backdrop-filter: blur(15px);
+  }
+
+  /* Disable scan line on mobile */
+  [data-theme="anime"] .navbar-scrolled::before {
+    display: none;
+  }
+}
+
+/* Extra small mobile optimizations */
+@media (max-width: 480px) {
+  [data-theme="anime"] .nav-links {
+    padding: 30px;
+    gap: 20px;
+    min-width: 180px;
+    max-width: 220px;
+  }
+
+  [data-theme="anime"] .nav-links .nav-link {
+    font-size: 15px;
+    padding: 8px 0;
+  }
+
+  [data-theme="anime"] .nav-links::before {
+    animation-duration: 8s;
+  }
+
+  [data-theme="anime"] .logo {
+    filter: drop-shadow(0 0 5px rgba(255, 23, 68, 0.3));
+  }
+}
+
+/* Very small mobile */
+@media (max-width: 360px) {
+  [data-theme="anime"] .nav-links {
+    padding: 25px;
+    min-width: 160px;
+    max-width: 200px;
+  }
+
+  [data-theme="anime"] .nav-links .nav-link {
+    font-size: 14px;
+  }
+}

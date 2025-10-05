@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 
+import AnimeEffects from './components/effects/AnimeEffects/AnimeEffects';
 import Navbar from './components/layout/Navbar/Navbar';
 import LoadingScreen from './components/layout/LoadingScreen/LoadingScreen';
 import Hero from './components/sections/Hero/Hero';
@@ -25,6 +26,7 @@ function App() {
       {/* ✨ Background Music Only */}
       <Navbar />
       <ThemeToggle />
+      <AnimeEffects />
       <ScrollToTop />
       
       <Suspense fallback={<div>Loading...</div>}>
