@@ -607,10 +607,8 @@ export const certifications = [
 ];
 
 export const stats = [
-  { icon: 'bi-award', value: '3.8+', label: 'GPA', color: '#00d4aa' },
   { icon: 'bi-code-slash', value: '15+', label: 'Projects', color: '#00a8e8' },
   { icon: 'bi-trophy', value: '5+', label: 'Competitions', color: '#7b2cbf' },
-  { icon: 'bi-people', value: '100%', label: 'Team Work', color: '#ff006e' },
 ];
 
 // Navigation links
