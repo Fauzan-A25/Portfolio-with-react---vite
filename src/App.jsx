@@ -9,6 +9,7 @@ import ThemeToggle from './components/core/ThemeToggle/ThemeToggle';
 
 // ✨ Import Background Music ONLY
 import BackgroundMusic from './components/BackgroundMusic/BackgroundMusic';
+import AiAssistant from './components/AiAssistant/AiAssistant';
 
 const About = lazy(() => import('./components/sections/About/About'));
 const Skills = lazy(() => import('./components/sections/Skills/Skills'));
@@ -23,6 +24,7 @@ function App() {
     <>
       <LoadingScreen />
       <BackgroundMusic />
+      <AiAssistant />
       {/* ✨ Background Music Only */}
       <Navbar />
       <ThemeToggle />
