@@ -26,7 +26,7 @@ function App() {
       {/* ✨ Background Music Only */}
       <Navbar />
       <ThemeToggle />
-      <AnimeEffects />
+      {/* <AnimeEffects /> */}
       <ScrollToTop />
       
       <Suspense fallback={<div>Loading...</div>}>

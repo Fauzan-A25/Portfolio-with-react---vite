@@ -492,7 +492,7 @@
   }
 }
 
-/* ========== ANIME THEME STYLES ========== */
+/* ========== OPTIMIZED ANIME THEME STYLES ========== */
 
 [data-theme="anime"] .skills-section {
   background: linear-gradient(180deg,
@@ -503,7 +503,7 @@
   overflow: hidden;
 }
 
-/* Circuit board pattern */
+/* Simplified circuit board pattern - single layer */
 [data-theme="anime"] .skills-section::before {
   content: '';
   position: absolute;
@@ -511,20 +511,23 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
-    linear-gradient(90deg, transparent 49%, rgba(0, 229, 255, 0.03) 49%, rgba(0, 229, 255, 0.03) 51%, transparent 51%),
-    linear-gradient(0deg, transparent 49%, rgba(255, 23, 68, 0.03) 49%, rgba(255, 23, 68, 0.03) 51%, transparent 51%);
+  background-image: linear-gradient(90deg, 
+    transparent 49%, 
+    rgba(0, 229, 255, 0.02) 49%, 
+    rgba(0, 229, 255, 0.02) 51%, 
+    transparent 51%);
   background-size: 80px 80px;
-  animation: circuitMove 25s linear infinite;
+  animation: circuitMove 30s linear infinite;
   pointer-events: none;
+  will-change: transform;
 }
 
 @keyframes circuitMove {
-  0% { background-position: 0 0, 0 0; }
-  100% { background-position: 80px 80px, 0 80px; }
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(80px, 80px); }
 }
 
-/* Glowing orbs */
+/* Simplified glowing orbs - single gradient */
 [data-theme="anime"] .skills-section::after {
   content: '';
   position: absolute;
@@ -532,31 +535,30 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(255, 23, 68, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(0, 229, 255, 0.15) 0%, transparent 40%);
-  animation: orbMove 12s ease-in-out infinite alternate;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.08) 0%, transparent 50%);
+  animation: orbMove 15s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
 @keyframes orbMove {
   0% { transform: translate(0, 0); }
-  100% { transform: translate(30px, -30px); }
+  100% { transform: translate(20px, -20px); }
 }
 
-/* Skill category cards */
+/* Skill category cards - reduced blur */
 [data-theme="anime"] .skill-category {
   background: rgba(17, 0, 32, 0.7);
   border: 2px solid rgba(255, 23, 68, 0.3);
   border-radius: 20px;
-  backdrop-filter: blur(25px);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5),
-              inset 0 0 50px rgba(0, 229, 255, 0.03);
+  backdrop-filter: blur(8px); /* Reduced from 25px */
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
 }
 
-/* Animated corner accents */
+/* Simplified corner accents */
 [data-theme="anime"] .skill-category::before {
   content: '';
   position: absolute;
@@ -564,11 +566,9 @@
   left: 0;
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, 
-    rgba(0, 229, 255, 0.2) 0%, 
-    transparent 70%);
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.15) 0%, transparent 70%);
   border-radius: 0 0 100% 0;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 [data-theme="anime"] .skill-category::after {
@@ -578,79 +578,62 @@
   right: 0;
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, 
-    transparent 30%,
-    rgba(255, 23, 68, 0.2) 100%);
+  background: linear-gradient(135deg, transparent 30%, rgba(255, 23, 68, 0.15) 100%);
   border-radius: 100% 0 0 0;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 [data-theme="anime"] .skill-category:hover::before {
-  width: 120px;
-  height: 120px;
-  background: linear-gradient(135deg, 
-    rgba(0, 229, 255, 0.3) 0%, 
-    transparent 70%);
+  width: 110px;
+  height: 110px;
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.25) 0%, transparent 70%);
 }
 
 [data-theme="anime"] .skill-category:hover::after {
-  width: 120px;
-  height: 120px;
-  background: linear-gradient(135deg, 
-    transparent 30%,
-    rgba(255, 23, 68, 0.3) 100%);
+  width: 110px;
+  height: 110px;
+  background: linear-gradient(135deg, transparent 30%, rgba(255, 23, 68, 0.25) 100%);
 }
 
 [data-theme="anime"] .skill-category:hover {
-  transform: translateY(-12px);
-  border-color: rgba(0, 229, 255, 0.8);
-  box-shadow: 0 15px 60px rgba(255, 23, 68, 0.4),
-              0 0 80px rgba(0, 229, 255, 0.3),
-              inset 0 0 60px rgba(0, 229, 255, 0.05);
+  transform: translateY(-10px);
+  border-color: rgba(0, 229, 255, 0.7);
+  box-shadow: 0 15px 50px rgba(255, 23, 68, 0.3), 0 0 60px rgba(0, 229, 255, 0.25);
 }
 
-/* Category title with neon underline */
+/* Category title - simplified effects */
 [data-theme="anime"] .category-title {
   color: #ffffff;
-  text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
   border-bottom: 2px solid transparent;
-  border-image: linear-gradient(90deg, 
-    rgba(255, 23, 68, 0.8), 
-    rgba(0, 229, 255, 0.8)) 1;
+  border-image: linear-gradient(90deg, rgba(255, 23, 68, 0.7), rgba(0, 229, 255, 0.7)) 1;
   position: relative;
   z-index: 1;
 }
 
 [data-theme="anime"] .category-title::before {
   background: linear-gradient(135deg, #ff1744 0%, #00e5ff 100%);
-  box-shadow: 0 0 15px rgba(255, 23, 68, 0.6),
-              0 0 25px rgba(0, 229, 255, 0.4);
-  animation: accentPulse 3s ease-in-out infinite;
+  box-shadow: 0 0 12px rgba(255, 23, 68, 0.5);
+  transition: box-shadow 0.3s ease;
 }
 
-@keyframes accentPulse {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(255, 23, 68, 0.6),
-                0 0 25px rgba(0, 229, 255, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(255, 23, 68, 0.9),
-                0 0 35px rgba(0, 229, 255, 0.7);
-  }
+/* Removed infinite pulse animation */
+[data-theme="anime"] .skill-category:hover .category-title::before {
+  box-shadow: 0 0 20px rgba(255, 23, 68, 0.8), 0 0 30px rgba(0, 229, 255, 0.6);
 }
 
-/* Skill cards with holographic effect */
+/* Skill cards - reduced blur */
 [data-theme="anime"] .skill-card {
   background: rgba(17, 0, 32, 0.5);
   border: 2px solid rgba(255, 23, 68, 0.3);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
-              inset 0 0 30px rgba(0, 229, 255, 0.03);
+  backdrop-filter: blur(6px); /* Reduced from 15px */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Scan line effect */
+/* Simplified scan line effect */
 [data-theme="anime"] .skill-card::before {
   content: '';
   position: absolute;
@@ -658,10 +641,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, 
-    transparent, 
-    rgba(0, 229, 255, 0.15), 
-    transparent);
+  background: linear-gradient(180deg, transparent, rgba(0, 229, 255, 0.1), transparent);
   transition: top 0.6s ease;
 }
 
@@ -670,33 +650,26 @@
 }
 
 [data-theme="anime"] .skill-card:hover {
-  transform: translateX(12px);
-  background: rgba(17, 0, 32, 0.8);
-  border-color: rgba(0, 229, 255, 0.7);
-  box-shadow: 0 8px 35px rgba(255, 23, 68, 0.3),
-              0 0 40px rgba(0, 229, 255, 0.2),
-              inset 0 0 40px rgba(0, 229, 255, 0.05);
+  transform: translateX(10px);
+  background: rgba(17, 0, 32, 0.7);
+  border-color: rgba(0, 229, 255, 0.6);
+  box-shadow: 0 8px 30px rgba(255, 23, 68, 0.25), 0 0 35px rgba(0, 229, 255, 0.2);
 }
 
-/* Icon wrapper with neon glow */
+/* Icon wrapper - simplified glow */
 [data-theme="anime"] .skill-icon-wrapper {
-  background: linear-gradient(135deg, 
-    rgba(255, 23, 68, 0.2), 
-    rgba(0, 229, 255, 0.2));
-  border: 2px solid rgba(0, 229, 255, 0.4);
-  box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3),
-              inset 0 0 20px rgba(0, 229, 255, 0.1);
+  background: linear-gradient(135deg, rgba(255, 23, 68, 0.15), rgba(0, 229, 255, 0.15));
+  border: 2px solid rgba(0, 229, 255, 0.3);
+  box-shadow: 0 4px 18px rgba(0, 229, 255, 0.25);
   position: relative;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 [data-theme="anime"] .skill-icon-wrapper::before {
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.3), 
-    transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
 }
 
-/* Rotating ring around icon */
+/* Simplified rotating ring - only on hover */
 [data-theme="anime"] .skill-icon-wrapper::after {
   content: '';
   position: absolute;
@@ -705,31 +678,23 @@
   right: -3px;
   bottom: -3px;
   border: 2px solid transparent;
-  border-top-color: rgba(255, 23, 68, 0.6);
-  border-right-color: rgba(0, 229, 255, 0.6);
+  border-top-color: rgba(255, 23, 68, 0.5);
+  border-right-color: rgba(0, 229, 255, 0.5);
   border-radius: 12px;
-  animation: rotateIconBorder 3s linear infinite;
   opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-@keyframes rotateIconBorder {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 [data-theme="anime"] .skill-card:hover .skill-icon-wrapper::after {
   opacity: 1;
+  transform: rotate(90deg); /* Single rotation instead of infinite */
 }
 
 [data-theme="anime"] .skill-card:hover .skill-icon-wrapper {
-  transform: scale(1.15) rotate(8deg);
-  background: linear-gradient(135deg, 
-    rgba(255, 23, 68, 0.4), 
-    rgba(0, 229, 255, 0.4));
-  border-color: rgba(0, 229, 255, 0.8);
-  box-shadow: 0 6px 30px rgba(0, 229, 255, 0.5),
-              inset 0 0 30px rgba(0, 229, 255, 0.2);
+  transform: scale(1.12) rotate(6deg);
+  background: linear-gradient(135deg, rgba(255, 23, 68, 0.3), rgba(0, 229, 255, 0.3));
+  border-color: rgba(0, 229, 255, 0.7);
+  box-shadow: 0 6px 25px rgba(0, 229, 255, 0.4);
 }
 
 [data-theme="anime"] .skill-icon-wrapper i {
@@ -737,7 +702,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.6));
+  filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.5));
 }
 
 /* Skill name with gradient */
@@ -746,63 +711,56 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.3));
+  filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.25));
+  transition: filter 0.3s ease;
 }
 
 [data-theme="anime"] .skill-card:hover .skill-name {
-  filter: drop-shadow(0 0 12px rgba(0, 229, 255, 0.6));
-  animation: textShimmer 1s ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.5));
 }
 
-@keyframes textShimmer {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.85; }
-}
-
-/* Experience badge with enhanced glow */
+/* Experience badge - simplified glow */
 [data-theme="anime"] .skill-experience {
-  background: linear-gradient(135deg, rgba(255, 23, 68, 0.8), rgba(0, 229, 255, 0.8));
-  border: 1px solid rgba(0, 229, 255, 0.6);
-  box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4),
-              0 0 25px rgba(0, 229, 255, 0.3);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  background: linear-gradient(135deg, rgba(255, 23, 68, 0.7), rgba(0, 229, 255, 0.7));
+  border: 1px solid rgba(0, 229, 255, 0.5);
+  box-shadow: 0 4px 12px rgba(255, 23, 68, 0.3);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
   position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
 [data-theme="anime"] .skill-experience::before {
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.4), 
-    transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
 }
 
 [data-theme="anime"] .skill-card:hover .skill-experience {
-  box-shadow: 0 6px 25px rgba(255, 23, 68, 0.6),
-              0 0 40px rgba(0, 229, 255, 0.5);
-  transform: scale(1.08);
-  filter: brightness(1.2);
+  box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5), 0 0 35px rgba(0, 229, 255, 0.4);
+  transform: scale(1.06);
+  filter: brightness(1.15);
 }
 
 /* Description */
 [data-theme="anime"] .skill-description {
   color: rgba(255, 255, 255, 0.75);
-  text-shadow: 0 0 5px rgba(0, 229, 255, 0.2);
+  text-shadow: 0 0 4px rgba(0, 229, 255, 0.15);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 [data-theme="anime"] .skill-card:hover .skill-description {
   color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+  text-shadow: 0 0 6px rgba(0, 229, 255, 0.25);
 }
 
-/* Project count badge */
+/* Project count badge - simplified animation */
 [data-theme="anime"] .project-count {
-  background: rgba(0, 229, 255, 0.15);
-  border: 1px solid rgba(0, 229, 255, 0.4);
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.3);
   color: #00e5ff;
-  text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
-  box-shadow: 0 2px 10px rgba(0, 229, 255, 0.3);
+  text-shadow: 0 0 6px rgba(0, 229, 255, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 229, 255, 0.25);
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 [data-theme="anime"] .project-count::before {
@@ -812,10 +770,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.2), 
-    transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
   transition: left 0.5s ease;
 }
 
@@ -824,29 +779,25 @@
 }
 
 [data-theme="anime"] .project-count i {
-  filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.8));
+  filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.7));
 }
 
 [data-theme="anime"] .skill-card:hover .project-count {
-  background: rgba(0, 229, 255, 0.25);
-  border-color: rgba(0, 229, 255, 0.8);
-  transform: scale(1.08);
-  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.5);
+  background: rgba(0, 229, 255, 0.22);
+  border-color: rgba(0, 229, 255, 0.7);
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.4);
 }
 
-/* Loading animation enhancement */
+/* Simplified loading animation */
 [data-theme="anime"] .skill-card:not(.fade-in) {
-  animation: neonPulseLoad 1.5s ease-in-out infinite;
+  opacity: 0.4;
+  animation: fadeInLoad 1s ease-in-out forwards;
 }
 
-@keyframes neonPulseLoad {
-  0%, 100% {
-    opacity: 0.3;
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
-  }
-  50% {
-    opacity: 0.6;
-    box-shadow: 0 0 30px rgba(255, 23, 68, 0.4);
+@keyframes fadeInLoad {
+  to {
+    opacity: 1;
   }
 }
 
@@ -854,6 +805,11 @@
 @media (max-width: 768px) {
   [data-theme="anime"] .skills-section::before {
     background-size: 60px 60px;
+    animation-duration: 35s;
+  }
+
+  [data-theme="anime"] .skill-category {
+    backdrop-filter: blur(6px);
   }
 
   [data-theme="anime"] .skill-category::before,
@@ -864,35 +820,41 @@
 
   [data-theme="anime"] .skill-category:hover::before,
   [data-theme="anime"] .skill-category:hover::after {
-    width: 90px;
-    height: 90px;
+    width: 85px;
+    height: 85px;
   }
 
   [data-theme="anime"] .skill-category:hover {
     transform: translateY(-8px);
   }
 
+  [data-theme="anime"] .skill-card {
+    backdrop-filter: blur(5px);
+  }
+
   [data-theme="anime"] .skill-card:hover {
-    transform: translateX(8px);
+    transform: translateX(6px);
   }
 }
 
 @media (max-width: 480px) {
   [data-theme="anime"] .skills-section::before {
     background-size: 40px 40px;
-    animation-duration: 30s;
+    animation-duration: 40s;
   }
 
   [data-theme="anime"] .skills-section::after {
-    animation-duration: 15s;
+    animation-duration: 20s;
   }
 
   [data-theme="anime"] .skill-category {
     border-width: 1.5px;
+    backdrop-filter: blur(4px);
   }
 
   [data-theme="anime"] .skill-card {
     border-width: 1.5px;
+    backdrop-filter: blur(4px);
   }
 
   [data-theme="anime"] .skill-card:hover {
@@ -904,14 +866,35 @@
   }
 
   [data-theme="anime"] .skill-card:hover .skill-icon-wrapper {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.08) rotate(4deg);
   }
 
   [data-theme="anime"] .skill-card:hover .skill-experience {
-    transform: scale(1.05);
+    transform: scale(1.04);
   }
 
   [data-theme="anime"] .skill-card:hover .project-count {
-    transform: scale(1.05);
+    transform: scale(1.04);
+  }
+}
+
+/* Accessibility - reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="anime"] .skills-section::before,
+  [data-theme="anime"] .skills-section::after {
+    animation: none;
+  }
+
+  [data-theme="anime"] * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-theme="anime"] .skill-card::before {
+    display: none;
+  }
+
+  [data-theme="anime"] .skill-icon-wrapper::after {
+    display: none;
   }
 }
