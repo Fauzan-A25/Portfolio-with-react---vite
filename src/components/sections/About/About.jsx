@@ -21,7 +21,7 @@ const About = memo(() => {
               <div className="title-underline"></div>
               
               <p className="about-text">
-                Second-year undergraduate student of <strong>Data Science at {personalInfo.university}</strong> with 
+                Third-year undergraduate student of <strong>Data Science at {personalInfo.university}</strong> with 
                 strong skills in data analysis, statistical evaluation, and problem-solving. Actively involved 
                 in academic activities with excellent attention to detail and observation skills.
               </p>
